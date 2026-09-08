@@ -1,0 +1,1215 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#4d8dff">
+    <title>BlueRain Study</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+SC:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="app">
+
+    <!-- ================= SIDEBAR ================= -->
+    <aside class="sidebar">
+
+        <div class="brand">
+            <div class="brand-icon">💧</div>
+            <div>
+                <h2>BlueRain</h2>
+                <span>Study Space</span>
+            </div>
+        </div>
+
+        <nav class="nav">
+
+            <button class="nav-item active" data-page="dashboard">
+                <span>⌂</span>
+                <span>Dashboard</span>
+            </button>
+
+            <button class="nav-item" data-page="subjects">
+                <span>▣</span>
+                <span>Subjects</span>
+                </button>
+
+            <button class="nav-item" data-page="calendar">
+                <span>📅</span>
+                <span>Calendar</span>
+                </button>
+
+            <button class="nav-item" data-page="statistics">
+                <span>📊</span>
+                <span>Statistics</span>
+                </button>
+
+            <button class="nav-item" data-page="todo">
+                <span>📝</span>
+                <span>Todo</span>
+                </button>
+
+            <button class="nav-item" data-page="focus">
+                <span>◷</span>
+                <span>Focus</span>
+                </button>
+
+            <button class="nav-item" data-page="rewards">
+                <span>🎁</span>
+                <span>Rewards</span>
+            </button>
+
+            <button class="nav-item" data-page="achievements">
+                <span>🏆</span>
+                <span>Achievements</span>
+            </button>
+
+            <button class="nav-item" data-page="settings">
+                <span>⚙</span>
+                <span>Settings</span>
+            </button>
+
+        </nav>
+
+        <div class="sidebar-bottom">
+
+            <div class="mini-profile">
+                <div class="avatar">💙</div>
+                <div>
+                    <strong>Study Mode</strong>
+                    <small>Keep going!</small>
+                </div>
+            </div>
+
+            <div class="quote">
+                <span>💧</span>
+                今天也向目标前进
+            </div>
+
+        </div>
+
+    </aside>
+
+
+    <!-- ================= MAIN ================= -->
+    <main class="main">
+
+        <!-- MOBILE HEADER -->
+        <header class="mobile-header">
+            <button id="mobileMenu">☰</button>
+            <strong>BlueRain Study</strong>
+            <button id="mobileTheme">☾</button>
+        </header>
+
+
+        <!-- ================= DASHBOARD ================= -->
+        <section class="page active" id="dashboard">
+
+            <div class="page-header">
+                <div>
+                    <p class="eyebrow">GOOD TO SEE YOU ✦</p>
+                    <h1>Good morning! 💙</h1>
+                    <p class="subtitle">Ready to make today a productive day?</p>
+                </div>
+
+                <div class="date-box">
+                    <span id="todayDate"></span>
+                </div>
+            </div>
+
+
+            <!-- TODAY MISSION -->
+            <div class="mission-card">
+
+                <div class="mission-content">
+
+                    <div class="mission-tag">✦ TODAY'S STUDY MISSION</div>
+
+                    <h2>一滴一程</h2>
+
+                    <p>
+                        请继续带着梦想，乘风飞去，扶摇万里。
+                    </p>
+
+                    <div class="goal-row">
+
+                        <div>
+                            <span>Study Goal</span>
+                            <strong id="goalText">0h / 3h</strong>
+                        </div>
+
+                        <div class="goal-progress">
+                            <div id="goalProgress"></div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="mission-star">💧</div>
+
+            </div>
+
+
+            <!-- STAT CARDS -->
+            <div class="stats-grid">
+
+                <div class="stat-card">
+                    <div class="stat-icon blue">◷</div>
+                    <div>
+                        <span>今日学习时长</span>
+                        <strong id="todayStudy">0h 00m</strong>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon orange">🔥</div>
+                    <div>
+                        <span>连续学习天数</span>
+                        <strong id="studyStreak">0 days</strong>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon purple">◎</div>
+                    <div>
+                        <span>今日专注次数</span>
+                        <strong id="todayFocus">0</strong>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon pink">⌛</div>
+                    <div>
+                        <span>今日专注时长</span>
+                        <strong id="todayFocusTime">0h 00m</strong>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon cyan">▥</div>
+                    <div>
+                        <span>本周学习时长</span>
+                        <strong id="weekStudy">0h 00m</strong>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon green">▦</div>
+                    <div>
+                        <span>本月学习统计</span>
+                        <strong id="monthStudy">0h 00m</strong>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <div class="dashboard-grid">
+
+                <!-- HEATMAP -->
+                <div class="card heatmap-card">
+
+                    <div class="card-header">
+                        <div>
+                            <h3>学习热力图</h3>
+                            <p>Keep the rain falling 💧</p>
+                        </div>
+
+                        <span class="month-label" id="heatmapMonth"></span>
+                    </div>
+
+                    <div class="heatmap-wrapper">
+
+                        <div class="weekday-labels">
+                            <span>Mon</span>
+                            <span>Wed</span>
+                            <span>Fri</span>
+                            <span>Sun</span>
+                        </div>
+
+                        <div id="heatmap"></div>
+
+                    </div>
+
+                    <div class="heatmap-legend">
+                        <span>Less</span>
+                        <i class="level-0"></i>
+                        <i class="level-1"></i>
+                        <i class="level-2"></i>
+                        <i class="level-3"></i>
+                        <i class="level-4"></i>
+                        <span>More</span>
+                    </div>
+
+                    <div id="heatmapDetail" class="heatmap-detail">
+                        点击日期查看学习记录
+                    </div>
+
+                </div>
+
+
+                <!-- TODAY RECORD -->
+                <div class="card">
+
+                    <div class="card-header">
+                        <div>
+                            <h3>今日学习记录</h3>
+                            <p>Your progress today</p>
+                        </div>
+
+                        <button class="text-btn" data-page="focus">
+                            + Add
+                        </button>
+                    </div>
+
+                    <div id="todayRecords" class="record-list">
+                        <div class="empty-state">
+                            <span>📖</span>
+                            <p>今天还没有学习记录</p>
+                            <small>Start your first focus session!</small>
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <!-- REWARD -->
+                <div class="card reward-preview">
+
+                    <div class="card-header">
+                        <div>
+                            <h3>今日获得奖励</h3>
+                            <p>Small rewards, big motivation</p>
+                        </div>
+
+                        <span class="points-badge">
+                            ⭐ <span id="pointsSmall">0</span>
+                        </span>
+                    </div>
+
+                    <div class="reward-box">
+
+                        <div class="reward-icon">🎁</div>
+
+                        <div>
+                            <strong id="nextRewardName">
+                                30 min · Music / Stage
+                            </strong>
+
+                            <p id="nextRewardProgress">
+                                0 / 30 points
+                            </p>
+
+                            <div class="mini-progress">
+                                <div id="rewardProgress"></div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= SUBJECTS ================= -->
+        <section class="page" id="subjects">
+
+            <div class="page-header">
+                <div>
+                    <p class="eyebrow">YOUR LEARNING JOURNEY</p>
+                    <h1>Subjects 📚</h1>
+                    <p class="subtitle">Track every unit and chapter.</p>
+                </div>
+            </div>
+
+            <div id="subjectsGrid" class="subjects-grid"></div>
+
+        </section>
+
+        <!-- ================= CALENDAR ================= -->
+
+<section class="page" id="calendar">
+
+    <div class="page-header">
+
+        <div>
+            <p class="eyebrow">YOUR STUDY HISTORY ✦</p>
+
+            <h1>Calendar 📅</h1>
+
+            <p class="subtitle">
+                点击日期查看当天的详细学习记录。
+            </p>
+        </div>
+
+    </div>
+
+
+    <div class="calendar-layout">
+
+        <!-- CALENDAR -->
+
+        <div class="card calendar-card">
+
+            <div class="calendar-top">
+
+                <button
+                    class="calendar-arrow"
+                    id="prevMonth"
+                >
+                    ‹
+                </button>
+
+                <h2 id="calendarMonthTitle">
+                    September 2026
+                </h2>
+
+                <button
+                    class="calendar-arrow"
+                    id="nextMonth"
+                >
+                    ›
+                </button>
+
+            </div>
+
+
+            <div class="calendar-weekdays">
+
+                <span>Mon</span>
+                <span>Tue</span>
+                <span>Wed</span>
+                <span>Thu</span>
+                <span>Fri</span>
+                <span>Sat</span>
+                <span>Sun</span>
+
+            </div>
+
+
+            <div
+                id="calendarGrid"
+                class="calendar-grid"
+            ></div>
+
+
+            <div class="calendar-legend">
+
+                <span>Less</span>
+
+                <i class="heat h0"></i>
+                <i class="heat h1"></i>
+                <i class="heat h2"></i>
+                <i class="heat h3"></i>
+                <i class="heat h4"></i>
+
+                <span>More</span>
+
+            </div>
+
+        </div>
+
+
+        <!-- SELECTED DAY -->
+
+        <div class="card day-detail-card">
+
+            <div class="card-header">
+
+                <div>
+
+                    <p class="eyebrow">
+                        STUDY DETAILS
+                    </p>
+
+                    <h3 id="selectedDateTitle">
+                        Today
+                    </h3>
+
+                </div>
+
+                <span>✦</span>
+
+            </div>
+
+
+            <div class="day-summary">
+
+                <div class="day-summary-box">
+
+                    <span>
+                        Total Study
+                    </span>
+
+                    <strong id="selectedDayTotal">
+                        0m
+                    </strong>
+
+                </div>
+
+
+                <div class="day-summary-box">
+
+                    <span>
+                        Total Focus
+                    </span>
+
+                    <strong id="selectedDayFocus">
+                        0m
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <div class="detail-section">
+
+                <h3>
+                    📚 Subject Breakdown
+                </h3>
+
+                <p>
+                    当天每个科目的学习时间和占比
+                </p>
+
+            </div>
+
+
+            <div id="subjectBreakdown">
+
+                <div class="empty-state">
+
+                    <span>📖</span>
+
+                    <p>
+                        点击一个日期查看记录
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ================= STATISTICS ================= -->
+
+<section class="page" id="statistics">
+
+    <div class="page-header">
+
+        <div>
+
+            <p class="eyebrow">
+                YOUR PROGRESS ✦
+            </p>
+
+            <h1>
+                Statistics 📊
+            </h1>
+
+            <p class="subtitle">
+                See how far you have come.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <!-- OVERVIEW -->
+
+    <div class="statistics-grid">
+
+        <div class="stat-card">
+
+            <div class="stat-icon blue">
+                ◷
+            </div>
+
+            <div>
+
+                <span>
+                    Total Study
+                </span>
+
+                <strong id="statTotalStudy">
+                    0h 00m
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <div class="stat-card">
+
+            <div class="stat-icon purple">
+                ◎
+            </div>
+
+            <div>
+
+                <span>
+                    Total Focus
+                </span>
+
+                <strong id="statTotalFocus">
+                    0h 00m
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <div class="stat-card">
+
+            <div class="stat-icon cyan">
+                💧
+            </div>
+
+            <div>
+
+                <span>
+                    Total Drop
+                </span>
+
+                <strong id="statTotalDrop">
+                    0
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <div class="stat-card">
+
+            <div class="stat-icon orange">
+                🔥
+            </div>
+
+            <div>
+
+                <span>
+                    Longest Streak
+                </span>
+
+                <strong id="statLongestStreak">
+                    0 days
+                </strong>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- WEEKLY TREND -->
+
+    <div class="card weekly-chart-card">
+
+        <div class="card-header">
+
+            <div>
+
+                <p class="eyebrow">
+                    THIS WEEK
+                </p>
+
+                <h3>
+                    📈 本周学习趋势
+                </h3>
+
+                <p>
+                    Track your study time throughout the week.
+                </p>
+
+            </div>
+
+
+            <strong id="weeklyTotalLabel">
+                0m
+            </strong>
+
+        </div>
+
+
+        <div
+            id="weeklyChart"
+            class="weekly-chart"
+        ></div>
+
+    </div>
+
+
+    <!-- SUBJECT STATISTICS -->
+
+    <div class="card statistics-subject-card">
+
+        <div class="card-header">
+
+            <div>
+
+                <h3>
+                    📚 Subject Statistics
+                </h3>
+
+                <p>
+                    各科目的累计学习情况
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div
+            id="statisticsSubjects"
+            class="statistics-subjects"
+        ></div>
+
+    </div>
+
+</section>
+
+<!-- ================= TODO ================= -->
+
+<section class="page" id="todo">
+
+    <div class="page-header">
+
+        <div>
+
+            <p class="eyebrow">
+                SMALL STEPS ✦
+            </p>
+
+            <h1>
+                Todo 📝
+            </h1>
+
+            <p class="subtitle">
+                Plan your study tasks and get them done.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="todo-layout">
+
+        <!-- ADD TODO -->
+
+        <div class="card todo-add-card">
+
+            <div class="card-header">
+
+                <div>
+
+                    <p class="eyebrow">
+                        NEW TASK
+                    </p>
+
+                    <h3>
+                        Add a Todo
+                    </h3>
+
+                </div>
+
+                <span>
+                    ✦
+                </span>
+
+            </div>
+
+
+            <div class="todo-form">
+
+                <div class="input-group">
+
+                    <label>
+                        Subject
+                    </label>
+
+                    <select id="todoSubject">
+
+                        <option value="">
+                            Select a subject
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="input-group">
+
+                    <label>
+                        Task
+                    </label>
+
+                    <input
+                        type="text"
+                        id="todoInput"
+                        placeholder="例如：完成 Biology Unit 5 notes"
+                    >
+
+                </div>
+
+
+                <div class="input-group">
+
+                    <label>
+                        Due Date
+                    </label>
+
+                    <input
+                        type="date"
+                        id="todoDate"
+                    >
+
+                </div>
+
+
+                <button
+                    class="primary-btn"
+                    id="addTodoBtn"
+                >
+                    ＋ Add Todo
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- TODO LIST -->
+
+        <div class="card todo-list-card">
+
+            <div class="card-header">
+
+                <div>
+
+                    <p class="eyebrow">
+                        MY TASKS
+                    </p>
+
+                    <h3>
+                        Study Todo
+                    </h3>
+
+                </div>
+
+                <span id="todoCount">
+                    0 tasks
+                </span>
+
+            </div>
+
+
+            <!-- FILTER -->
+
+            <div class="todo-filter">
+
+                <button
+                    class="todo-filter-btn active"
+                    data-filter="all"
+                >
+                    All
+                </button>
+
+                <button
+                    class="todo-filter-btn"
+                    data-filter="today"
+                >
+                    Today
+                </button>
+
+                <button
+                    class="todo-filter-btn"
+                    data-filter="pending"
+                >
+                    Pending
+                </button>
+
+                <button
+                    class="todo-filter-btn"
+                    data-filter="completed"
+                >
+                    Completed
+                </button>
+
+            </div>
+
+
+            <div
+                id="todoList"
+                class="todo-list"
+            >
+
+                <div class="empty-state">
+
+                    <span>
+                        📝
+                    </span>
+
+                    <p>
+                        No tasks yet
+                    </p>
+
+                    <small>
+                        Add something you want to accomplish today.
+                    </small>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+        <!-- ================= UNIT DETAIL ================= -->
+        <section class="page" id="unitDetail">
+
+            <div class="page-header">
+
+                <button class="back-btn" id="backSubjects">
+                    ← Back
+                </button>
+
+                <div>
+                    <p class="eyebrow" id="unitSubjectName"></p>
+                    <h1 id="unitDetailTitle">Unit</h1>
+                    <p class="subtitle">Track your learning progress.</p>
+                </div>
+
+            </div>
+
+            <div class="unit-detail-card">
+
+                <div class="unit-status-grid">
+
+                    <button class="status-option" data-status="not-started">
+                        <span>⬜</span>
+                        <strong>尚未开始</strong>
+                    </button>
+
+                    <button class="status-option" data-status="learning">
+                        <span>🟡</span>
+                        <strong>学习中</strong>
+                    </button>
+
+                    <button class="status-option" data-status="completed">
+                        <span>🟢</span>
+                        <strong>已完成</strong>
+                    </button>
+
+                </div>
+
+                <div class="unit-tools">
+
+                    <label class="check-tool">
+                        <input type="checkbox" id="revisionCheck">
+                        <span>📖 Revision</span>
+                    </label>
+
+                    <label class="check-tool">
+                        <input type="checkbox" id="notesCheck">
+                        <span>📝 Notes</span>
+                    </label>
+
+                    <label class="check-tool">
+                        <input type="checkbox" id="practiceCheck">
+                        <span>🧪 Practice</span>
+                    </label>
+
+                </div>
+
+                <div class="detail-progress">
+
+                    <div class="detail-progress-header">
+                        <span>Unit Progress</span>
+                        <strong id="unitProgressText">0%</strong>
+                    </div>
+
+                    <div class="progress-bar large">
+                        <div id="unitProgressBar"></div>
+                    </div>
+
+                </div>
+
+                <button class="primary-btn" id="startUnitFocus">
+                    ◷ Start Focus
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= FOCUS ================= -->
+        <section class="page" id="focus">
+
+            <div class="page-header">
+                <div>
+                    <p class="eyebrow">DEEP WORK ✦</p>
+                    <h1>Focus Timer ⏱️</h1>
+                    <p class="subtitle">Put your phone away. Let's focus.</p>
+                </div>
+            </div>
+
+            <div class="focus-layout">
+
+                <div class="focus-card">
+
+                    <div class="focus-selector">
+
+                        <div class="input-group">
+                            <label>Subject</label>
+                            <select id="focusSubject"></select>
+                        </div>
+
+                        <div class="input-group">
+                            <label>Unit / Chapter</label>
+                            <select id="focusUnit"></select>
+                        </div>
+
+                    </div>
+
+
+                    <div class="timer-mode">
+
+                        <button class="timer-mode-btn active" data-mode="countup">
+                            正计时
+                        </button>
+
+                        <button class="timer-mode-btn" data-mode="countdown">
+                            倒计时
+                        </button>
+
+                        <button class="timer-mode-btn" data-mode="pomodoro">
+                            Pomodoro
+                        </button>
+
+                    </div>
+
+
+                    <div class="timer-circle">
+
+                        <div class="timer-inner">
+
+                            <span id="timerLabel">FOCUS</span>
+
+                            <strong id="timerDisplay">
+                                00:00:00
+                            </strong>
+
+                            <small id="timerSub">
+                                Ready when you are
+                            </small>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="timer-controls">
+
+                        <button class="primary-btn big" id="timerStart">
+                            ▶ Start Focus
+                        </button>
+
+                        <button class="secondary-btn" id="timerPause">
+                            ⏸ Pause
+                        </button>
+
+                        <button class="secondary-btn" id="timerReset">
+                            ↻ Reset
+                        </button>
+
+                    </div>
+
+
+                    <div class="timer-options">
+
+                        <label>
+                            Countdown minutes
+                            <input type="number" id="countdownMinutes" value="25" min="1" max="180">
+                        </label>
+
+                    </div>
+
+                </div>
+
+
+                <!-- MUSIC -->
+                <div class="music-card">
+
+                    <div class="music-header">
+                        <span>🎵</span>
+                        <div>
+                            <h3>Study Music</h3>
+                            <p>Music for your focus time</p>
+                        </div>
+                    </div>
+
+                    <input
+                        id="spotifyUrl"
+                        class="url-input"
+                        type="text"
+                        placeholder="Paste Spotify playlist URL..."
+                    >
+
+                    <button class="secondary-btn full" id="loadSpotify">
+                        Load Spotify
+                    </button>
+
+                    <div id="spotifyPlayer" class="spotify-player">
+                        <div>
+                            🎧
+                            <p>Paste a Spotify playlist link to play music here.</p>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= REWARDS ================= -->
+        <section class="page" id="rewards">
+
+            <div class="page-header">
+                <div>
+                    <p class="eyebrow">KEEP GOING ✦</p>
+                    <h1>Reward Box 🎁</h1>
+                    <p class="subtitle">Study hard. Enjoy your rewards.</p>
+                </div>
+
+                <div class="points-total">
+                    ⭐ <strong id="pointsTotal">0</strong> points
+                </div>
+            </div>
+
+            <div id="rewardsGrid" class="rewards-grid"></div>
+
+        </section>
+
+
+        <!-- ================= ACHIEVEMENTS ================= -->
+        <section class="page" id="achievements">
+
+            <div class="page-header">
+                <div>
+                    <p class="eyebrow">YOUR MILESTONES</p>
+                    <h1>Achievements 🏆</h1>
+                    <p class="subtitle">Every small step counts.</p>
+                </div>
+            </div>
+
+            <div id="achievementsGrid" class="achievements-grid"></div>
+
+        </section>
+
+
+        <!-- ================= SETTINGS ================= -->
+        <section class="page" id="settings">
+
+            <div class="page-header">
+                <div>
+                    <p class="eyebrow">PERSONALIZE</p>
+                    <h1>Settings ⚙️</h1>
+                    <p class="subtitle">Make BlueRain Study yours.</p>
+                </div>
+            </div>
+
+            <div class="settings-card">
+
+                <div class="setting-row">
+                    <div>
+                        <strong>学习目标</strong>
+                        <p>Daily study target in hours.</p>
+                    </div>
+
+                    <input type="number" id="studyGoal" min="1" max="12" value="3">
+                </div>
+
+                <div class="setting-row">
+                    <div>
+                        <strong>黑暗模式</strong>
+                        <p>Switch between light and dark theme.</p>
+                    </div>
+
+                    <label class="switch">
+                        <input type="checkbox" id="darkMode">
+                        <span></span>
+                    </label>
+                </div>
+
+                <div class="setting-row">
+                    <div>
+                        <strong>小小瞬间</strong>
+                        <p>Upload a small photo for your profile.</p>
+                    </div>
+
+                    <label class="upload-btn">
+                        Upload
+                        <input type="file" id="photoUpload" accept="image/*">
+                    </label>
+                </div>
+
+                <div class="photo-preview">
+                    <img id="profilePhoto" alt="Profile photo">
+                    <span id="photoPlaceholder">💙</span>
+                </div>
+
+                <div class="setting-row danger">
+                    <div>
+                        <strong>Reset Data</strong>
+                        <p>Delete all study records and progress.</p>
+                    </div>
+
+                    <button class="danger-btn" id="resetData">
+                        Reset
+                    </button>
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+<!-- Toast -->
+<div id="toast" class="toast"></div>
+
+<script src="app.js"></script>
+
+</body>
+</html>
